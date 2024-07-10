@@ -12,6 +12,9 @@ public class ProductResquestDto {
     @JsonProperty("image_url")
     private String imageUrl;
 
+    @JsonProperty("image_hover_url")
+    private String imageHoverUrl;
+
     @JsonProperty("price")
     private BigDecimal price;
 
@@ -21,9 +24,10 @@ public class ProductResquestDto {
     @JsonProperty("description")
     private String description;
 
-    public ProductResquestDto(String name, String imageUrl, BigDecimal price, Integer hasStock, String description) {
+    public ProductResquestDto(String name, String imageUrl, String imageHoverUrl, BigDecimal price, Integer hasStock, String description) {
         this.name = name;
         this.imageUrl = imageUrl;
+        this.imageHoverUrl = imageHoverUrl;
         this.price = price;
         this.hasStock = hasStock;
         this.description = description;
@@ -67,5 +71,13 @@ public class ProductResquestDto {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImageHoverUrl() {
+        return imageHoverUrl;
+    }
+
+    public void setImageHoverUrl(String imageHoverUrl) {
+        this.imageHoverUrl = imageHoverUrl;
     }
 }

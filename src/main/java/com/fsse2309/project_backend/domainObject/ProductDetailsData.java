@@ -9,6 +9,7 @@ public class ProductDetailsData {
 
     private String name;
     private String imageUrl;
+    private String imageHoverUrl;
     private BigDecimal price;
     private Integer hasStock;
     private String description;
@@ -16,6 +17,7 @@ public class ProductDetailsData {
     public ProductDetailsData(ProductResquestDto productResquestDto) {
         this.name = productResquestDto.getName();
         this.imageUrl = productResquestDto.getImageUrl();
+        this.imageHoverUrl = productResquestDto.getImageHoverUrl();
         this.price = productResquestDto.getPrice();
         this.hasStock = productResquestDto.getHasStock();
         this.description = productResquestDto.getDescription();
@@ -35,6 +37,14 @@ public class ProductDetailsData {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getImageHoverUrl() {
+        return imageHoverUrl;
+    }
+
+    public void setImageHoverUrl(String imageHoverUrl) {
+        this.imageHoverUrl = imageHoverUrl;
     }
 
     public BigDecimal getPrice() {

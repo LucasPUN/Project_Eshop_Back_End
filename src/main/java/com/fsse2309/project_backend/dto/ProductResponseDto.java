@@ -16,6 +16,9 @@ public class ProductResponseDto {
     @JsonProperty("image_url")
     private String imageUrl;
 
+    @JsonProperty("image_hover_url")
+    private String imageHoverUrl;
+
     @JsonProperty("price")
     private BigDecimal price;
 
@@ -27,8 +30,17 @@ public class ProductResponseDto {
         this.productId = productDetailsDataOut.getPid();
         this.name = productDetailsDataOut.getName();
         this.imageUrl = productDetailsDataOut.getImageUrl();
+        this.imageHoverUrl = productDetailsDataOut.getImageHoverUrl();
         this.price = productDetailsDataOut.getPrice();
         this.hasStock = productDetailsDataOut.getHasStock() > 0 ;
+    }
+
+    public String getImageHoverUrl() {
+        return imageHoverUrl;
+    }
+
+    public void setImageHoverUrl(String imageHoverUrl) {
+        this.imageHoverUrl = imageHoverUrl;
     }
 
     public ProductResponseDto(TransactionProductDataOut transactionProductDataOut) {

@@ -19,6 +19,9 @@ public class ProductEntity {
     @Column(name = "image_url")
     private String imageUrl;
 
+    @Column(name = "image_hover_url")
+    private String imageHoverUrl;
+
     @Column(name = "price", nullable = false)
     private BigDecimal price;
 
@@ -34,6 +37,7 @@ public class ProductEntity {
         this.pid = pid;
         this.name = productDetailsData.getName();
         this.imageUrl = productDetailsData.getImageUrl();
+        this.imageHoverUrl = productDetailsData.getImageHoverUrl();
         this.price = productDetailsData.getPrice();
         this.hasStock = productDetailsData.getHasStock();
         this.description = productDetailsData.getDescription();
@@ -61,6 +65,14 @@ public class ProductEntity {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getImageHoverUrl() {
+        return imageHoverUrl;
+    }
+
+    public void setImageHoverUrl(String imageHoverUrl) {
+        this.imageHoverUrl = imageHoverUrl;
     }
 
     public BigDecimal getPrice() {
