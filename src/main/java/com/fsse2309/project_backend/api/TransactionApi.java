@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/transaction")
-@CrossOrigin({EnvConfig.devEnvBaseUrl,EnvConfig.prodBaseUrl})
+@CrossOrigin({EnvConfig.devEnvBaseUrl,EnvConfig.prodBaseUrl,EnvConfig.devEnvBaseUrl1})
 public class TransactionApi {
 
     private TransactionService transactionService;

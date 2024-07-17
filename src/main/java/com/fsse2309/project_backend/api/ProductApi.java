@@ -19,8 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/public/product")
-@CrossOrigin({EnvConfig.devEnvBaseUrl,EnvConfig.prodBaseUrl})
+@RequestMapping("/product")
+@CrossOrigin({EnvConfig.devEnvBaseUrl,EnvConfig.prodBaseUrl,EnvConfig.devEnvBaseUrl1})
 public class ProductApi {
     private ProductService productService;
 

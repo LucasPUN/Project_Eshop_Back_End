@@ -6,7 +6,7 @@ import com.fsse2309.project_backend.domainObject.ProductDetailsDataOut;
 import java.math.BigDecimal;
 
 public class ProductIdResponseDto {
-    @JsonProperty("product_id")
+    @JsonProperty("id")
     private Integer pid;
 
     @JsonProperty("name")

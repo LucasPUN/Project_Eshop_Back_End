@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/cart")
-@CrossOrigin({EnvConfig.devEnvBaseUrl,EnvConfig.prodBaseUrl})
+@CrossOrigin({EnvConfig.devEnvBaseUrl,EnvConfig.prodBaseUrl,EnvConfig.devEnvBaseUrl1})
 public class CartItemApi {
     private CartItemService cartItemService;
     private UserService userService;
