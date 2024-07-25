@@ -18,7 +18,7 @@ public class ProductResquestDto {
     @JsonProperty("price")
     private BigDecimal price;
 
-    @JsonProperty("has_stock")
+    @JsonProperty("stock")
     private Integer hasStock;
 
     @JsonProperty("description")

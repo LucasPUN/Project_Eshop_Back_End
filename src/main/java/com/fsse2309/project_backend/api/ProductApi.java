@@ -29,15 +29,6 @@ public class ProductApi {
         this.productService = productService;
     }
 
-    @PostMapping()
-    public ProductResponseDto productResponseDto(@RequestBody ProductResquestDto productResquestDto){
-        ProductDetailsData productDetailsData = new ProductDetailsData(productResquestDto);
-        ProductDetailsDataOut productDetailsDataOut = productService.createProduct(productDetailsData);
-
-        ProductResponseDto productResponseDto = new ProductResponseDto(productDetailsDataOut);
-        return productResponseDto;
-    }
-
     @GetMapping()
     public List<ProductResponseDto> getAllProductDto(){
         List<ProductDetailsDataOut> productDetailsDataOutList = productService.getAllProduct();
@@ -65,4 +56,5 @@ public class ProductApi {
         }
         return productIdResponseDtoList;
     }
+
 }

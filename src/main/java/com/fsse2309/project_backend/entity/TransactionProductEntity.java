@@ -31,7 +31,7 @@ public class TransactionProductEntity {
     @Column(name = "has_stcok", nullable = false)
     private Integer hasStock;
 
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
     @Column(name = "quatity", nullable = false)

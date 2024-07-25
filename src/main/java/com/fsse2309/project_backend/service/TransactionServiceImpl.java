@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -121,5 +122,16 @@ public class TransactionServiceImpl implements TransactionService{
 
     public TransactionEntity getEntityByTid(Integer tid){
         return transactionRepository.findById(tid).orElseThrow(TransactionNotFound::new);
+    }
+
+    @Override
+    public List<TransactionDataOut> getAllTransaction(){
+        List<TransactionDataOut> transactionDataOutList = new ArrayList<>();
+
+        for (TransactionEntity transactionEntity : transactionRepository.findAll()) {
+            TransactionDataOut transactionDataOut = new TransactionDataOut(transactionEntity);
+           transactionDataOutList.add(transactionDataOut);
+        }
+        return transactionDataOutList;
     }
 }

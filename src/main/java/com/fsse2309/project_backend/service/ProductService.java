@@ -9,6 +9,8 @@ import java.util.List;
 public interface ProductService {
     ProductDetailsDataOut createProduct(ProductDetailsData productDetailsData);
 
+    ProductDetailsDataOut updateProduct(int id, ProductDetailsData productDetailsData);
+
     List<ProductDetailsDataOut> getAllProduct();
 
     ProductDetailsDataOut getById(Integer id);
@@ -16,4 +18,8 @@ public interface ProductService {
     List<ProductDetailsDataOut> getByName(String name);
 
     boolean deductStock(Integer pid, Integer quantity);
+
+    void deleteProduct(int id);
+
+
 }

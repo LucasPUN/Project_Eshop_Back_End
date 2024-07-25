@@ -16,4 +16,6 @@ public interface TransactionService {
     boolean processTransacton(FirebaseUserData firebaseUserData, Integer tid);
 
     TransactionDataOut finishTransaction(FirebaseUserData firebaseUserData, Integer tid);
+
+    List<TransactionDataOut> getAllTransaction();
 }

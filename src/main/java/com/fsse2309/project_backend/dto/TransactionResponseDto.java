@@ -9,12 +9,11 @@ import com.fsse2309.project_backend.status.TransactionStatus;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class TransactionResponseDto {
 
-    private Integer tid;
+    private Integer id;
     @JsonProperty("buyer_uid")
     private Integer buyerUid;
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
@@ -25,7 +24,7 @@ public class TransactionResponseDto {
     private List<TransactionProductResponseDto> transactionProductResponseDtoList = new ArrayList<>();
 
     public TransactionResponseDto(TransactionDataOut transactionDataOut) {
-        this.tid = transactionDataOut.getTid();
+        this.id = transactionDataOut.getTid();
         this.buyerUid = transactionDataOut.getBuyer_uid().getUid();
         this.datetime = transactionDataOut.getDatetime();
         this.status = transactionDataOut.getStatus();
@@ -35,12 +34,12 @@ public class TransactionResponseDto {
         }
     }
 
-    public Integer getTid() {
-        return tid;
+    public Integer getId() {
+        return id;
     }
 
-    public void setTid(Integer tid) {
-        this.tid = tid;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getBuyerUid() {

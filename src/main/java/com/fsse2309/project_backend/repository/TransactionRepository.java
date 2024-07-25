@@ -9,6 +9,6 @@ import java.util.List;
 public interface TransactionRepository extends CrudRepository <TransactionEntity, Integer>{
     TransactionEntity findBytid(Integer tid);
 
-    TransactionEntity getByTidAndUserEntity_Uid(Integer tid, Integer uid);
+    TransactionEntity getByTidAndUserEntity_Uid(Integer tid, Integer id);
 
 }

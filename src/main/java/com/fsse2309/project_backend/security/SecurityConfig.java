@@ -22,8 +22,11 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
-                        .requestMatchers(HttpMethod.GET, "/product").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/product/*").permitAll()
+//                        .requestMatchers(HttpMethod.GET, "/product").permitAll()
+                        .requestMatchers("/product").permitAll()
+                        .requestMatchers("/user").permitAll()
+                        .requestMatchers( "/transaction").permitAll()
+                        .requestMatchers("/product/**").permitAll()
                         .anyRequest().authenticated())
                 .csrf(csrf -> csrf.disable())
                 .cors(Customizer.withDefaults());

@@ -18,17 +18,29 @@ public class ProductIdResponseDto {
     @JsonProperty("image_url")
     private String imageUrl;
 
+    @JsonProperty("image_hover_url")
+    private String imageHoverUrl;
+
     @JsonProperty("price")
     private BigDecimal price;
 
     @JsonProperty("stock")
     private Integer hasStock;
 
+    public String getImageHoverUrl() {
+        return imageHoverUrl;
+    }
+
+    public void setImageHoverUrl(String imageHoverUrl) {
+        this.imageHoverUrl = imageHoverUrl;
+    }
+
     public ProductIdResponseDto(ProductDetailsDataOut productDetailsDataOut) {
         this.pid = productDetailsDataOut.getPid();
         this.name = productDetailsDataOut.getName();
         this.description = productDetailsDataOut.getDescription();
         this.imageUrl = productDetailsDataOut.getImageUrl();
+        this.imageHoverUrl = productDetailsDataOut.getImageHoverUrl();
         this.price = productDetailsDataOut.getPrice();
         this.hasStock = productDetailsDataOut.getHasStock();
     }

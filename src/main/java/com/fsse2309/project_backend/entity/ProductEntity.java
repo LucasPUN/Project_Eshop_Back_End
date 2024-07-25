@@ -28,13 +28,21 @@ public class ProductEntity {
     @Column(name = "has_stcok", nullable = false)
     private Integer hasStock;
 
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
     public ProductEntity(){}
 
     public ProductEntity(ProductDetailsData productDetailsData) {
-        this.pid = pid;
+        this.name = productDetailsData.getName();
+        this.imageUrl = productDetailsData.getImageUrl();
+        this.imageHoverUrl = productDetailsData.getImageHoverUrl();
+        this.price = productDetailsData.getPrice();
+        this.hasStock = productDetailsData.getHasStock();
+        this.description = productDetailsData.getDescription();
+    }
+
+    public void setProductEntity(ProductDetailsData productDetailsData) {
         this.name = productDetailsData.getName();
         this.imageUrl = productDetailsData.getImageUrl();
         this.imageHoverUrl = productDetailsData.getImageHoverUrl();
