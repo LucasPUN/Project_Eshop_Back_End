@@ -14,7 +14,7 @@ public interface TransactionService {
 
     String processTransaction(FirebaseUserData firebaseUserData, Integer tid);
 
-    TransactionDataOut finishTransaction(FirebaseUserData firebaseUserData, Integer tid);
+    TransactionDataOut finishTransaction(FirebaseUserData firebaseUserData, String ssid);
 
     List<TransactionDataOut> getAllTransaction();
 }

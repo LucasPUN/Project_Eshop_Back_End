@@ -5,6 +5,7 @@ import com.fsse2309.project_backend.domainObject.TransactionDataOut;
 import com.fsse2309.project_backend.entity.TransactionEntity;
 import com.fsse2309.project_backend.entity.TransactionProductEntity;
 import com.fsse2309.project_backend.entity.UserEntity;
+import com.fsse2309.project_backend.exception.PayTransactionException;
 import com.fsse2309.project_backend.exception.TransactionNotFound;
 import com.fsse2309.project_backend.repository.TransactionProductRepository;
 import com.fsse2309.project_backend.repository.TransactionRepository;
@@ -91,16 +92,20 @@ public class TransactionServiceImpl implements TransactionService{
     }
 
     @Override
-    public TransactionDataOut finishTransaction(FirebaseUserData firebaseUserData, Integer tid) {
+    public TransactionDataOut finishTransaction(FirebaseUserData firebaseUserData, String ssid) {
         UserEntity userEntity = getEntityByFirebaseUserData(firebaseUserData);
 
-        TransactionEntity transactionEntity = transactionRepository.getByTidAndUserEntity_Uid(
-                tid,
+        TransactionEntity transactionEntity = transactionRepository.getByStripeSessionIdAndUserEntity_Uid(
+                ssid,
                 userEntity.getUid()
         );
 
         if (transactionEntity.getStatus() != TransactionStatus.PROCESSING){
             throw new TransactionNotFound();
+        }
+
+        if (!stripeService.isComplete(ssid)) {
+            throw new PayTransactionException("Not Completed StripeSession");
         }
 
         for (TransactionProductEntity transactionProductEntity : transactionEntity.getTransactionProductEntityList()){

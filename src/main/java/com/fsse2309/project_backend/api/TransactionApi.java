@@ -40,7 +40,7 @@ public class TransactionApi {
         return transactionResponseDto;
     }
 
-    @PatchMapping("{tid}/pay")
+    @PatchMapping("/{tid}/pay")
     public ResponseEntity<Map<String, String>> payTransaction(JwtAuthenticationToken jwt, @PathVariable Integer tid) {
         String stripeUrl = transactionService.processTransaction(JwtUtill.getFirebaseUser(jwt), tid);
         Map<String, String> response = new HashMap<>();
@@ -48,11 +48,11 @@ public class TransactionApi {
         return ResponseEntity.ok(response);
     }
 
-    @PatchMapping("{tid}/finish")
+    @PatchMapping("/{ssid}/finish")
     public TransactionResponseDto finishTransaction(JwtAuthenticationToken jwt,
-                                                    @PathVariable Integer tid){
+                                                    @PathVariable String ssid){
         return new TransactionResponseDto(
-                transactionService.finishTransaction(JwtUtill.getFirebaseUser(jwt),tid)
+                transactionService.finishTransaction(JwtUtill.getFirebaseUser(jwt),ssid)
         );
     }
 }

@@ -12,4 +12,6 @@ public interface TransactionRepository extends CrudRepository <TransactionEntity
 
     TransactionEntity getByTidAndUserEntity_Uid(Integer tid, Integer id);
 
+    TransactionEntity getByStripeSessionIdAndUserEntity_Uid(String ssid, Integer id);
+
 }
