@@ -1,7 +1,9 @@
 package com.fsse2309.project_backend.api;
 
 import com.fsse2309.project_backend.config.EnvConfig;
+import com.fsse2309.project_backend.domainObject.ProductDetailsDataOut;
 import com.fsse2309.project_backend.domainObject.TransactionDataOut;
+import com.fsse2309.project_backend.dto.ProductResponseDto;
 import com.fsse2309.project_backend.dto.TransactionResponseDto;
 import com.fsse2309.project_backend.service.TransactionService;
 import com.fsse2309.project_backend.utill.JwtUtill;
@@ -10,7 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -38,6 +42,16 @@ public class TransactionApi {
         TransactionDataOut transactionDataOut = transactionService.getTransactionByTid(JwtUtill.getFirebaseUser(jwt),tid);
         TransactionResponseDto transactionResponseDto = new TransactionResponseDto(transactionDataOut);
         return transactionResponseDto;
+    }
+
+    @GetMapping("/user")
+    public List<TransactionResponseDto> getAllTransaction(JwtAuthenticationToken jwt){
+        List<TransactionDataOut> transactionDataOutList = transactionService.getAllTransactionByUser(JwtUtill.getFirebaseUser(jwt));
+        List<TransactionResponseDto> transactionResponseDtoList = new ArrayList<>();
+        for (TransactionDataOut transactionDataOut: transactionDataOutList){
+            transactionResponseDtoList.add(new TransactionResponseDto(transactionDataOut));
+        }
+        return transactionResponseDtoList;
     }
 
     @PatchMapping("/{tid}/pay")

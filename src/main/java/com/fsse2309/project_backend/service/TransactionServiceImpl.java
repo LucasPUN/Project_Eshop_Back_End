@@ -150,4 +150,17 @@ public class TransactionServiceImpl implements TransactionService{
         }
         return transactionDataOutList;
     }
+
+    @Override
+    public List<TransactionDataOut> getAllTransactionByUser(FirebaseUserData firebaseUserData){
+        UserEntity userEntity = getEntityByFirebaseUserData(firebaseUserData);
+
+        List<TransactionDataOut> transactionDataOutList = new ArrayList<>();
+
+        for (TransactionEntity transactionEntity : transactionRepository.findAllByUserEntity(userEntity)) {
+            TransactionDataOut transactionDataOut = new TransactionDataOut(transactionEntity);
+            transactionDataOutList.add(transactionDataOut);
+        }
+        return transactionDataOutList;
+    }
 }
